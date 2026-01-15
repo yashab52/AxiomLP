@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аксиома | Axiom - Яков Ласкер</title>
+    <meta name="description" content="Политический научно-фантастический триллер о тайнах, которые связывают миры">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg-dark: #0d1117;
+            --color-bg-secondary: #161b22;
+            --color-bg-elevated: #1c2128;
+            --color-accent: #da8548;
+            --color-accent-hover: #c76e35;
+            --color-text: #f0f6fc;
+            --color-text-secondary: #c9d1d9;
+            --color-border: #30363d;
+            --color-wolf-amber: #daa520;
+            --font-display: 'Crimson Pro', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg-dark);
+            color: var(--color-text);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Background texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(218, 133, 72, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(218, 165, 32, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .tagline {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            font-weight: 300;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Book Showcase */
+        .book-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+            margin: 4rem 0;
+            animation: fadeIn 1.4s ease-out 0.3s both;
+        }
+        
+        @media (max-width: 900px) {
+            .book-showcase {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        .book-cover-container {
+            position: relative;
+        }
+        
+        .book-cover {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px var(--color-border);
+            border-radius: 4px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .book-cover:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 30px 80px rgba(218, 133, 72, 0.3),
+                0 0 0 1px var(--color-accent);
+        }
+        
+        .book-info {
+            padding-top: 2rem;
+        }
+        
+        .title-group {
+            margin-bottom: 2rem;
+        }
+        
+        .book-title-ru {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .author {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+        
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-text);
+        }
+        
+        .description p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .description p:last-child {
+            color: var(--color-accent);
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* Access Sections */
+        .access-sections {
+            margin: 6rem 0;
+            animation: fadeIn 1.6s ease-out 0.6s both;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+        
+        .access-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        
+        .access-card:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .access-header {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+        
+        .access-header:hover {
+            background: var(--color-bg-elevated);
+        }
+        
+        .access-header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .access-icon {
+            font-size: 2rem;
+        }
+        
+        .access-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-accent);
+            margin: 0;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--color-text-secondary);
+            transition: transform 0.3s ease;
+        }
+        
+        .access-card.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .access-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .access-card.active .access-content {
+            max-height: 3000px;
+            padding: 0 2rem 2rem;
+        }
+        
+        .access-content-inner {
+            padding-top: 1rem;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .version-group {
+            margin-bottom: 2.5rem;
+        }
+        
+        .version-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .platform-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            color: var(--color-text);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-link:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-bg-dark);
+            transform: translateY(-2px);
+        }
+        
+        .instructions {
+            background: var(--color-bg-elevated);
+            padding: 2rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+        
+        .device-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .device-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .device-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .instructions ol {
+            padding-left: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .instructions li {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .instructions a {
+            color: var(--color-accent);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .instructions a:hover {
+            text-decoration: underline;
+        }
+        
+        .download-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--color-bg-elevated);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .download-link:hover {
+            background: var(--color-accent);
+            color: var(--color-bg-dark);
+        }
+        
+        .purchase-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .store-group {
+            background: var(--color-bg-dark);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+        }
+        
+        .store-name {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .store-group a {
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 6rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .book-title-ru {
+                font-size: 2.5rem;
+            }
+            
+            .access-header {
+                padding: 1.5rem;
+            }
+            
+            .access-card.active .access-content {
+                padding: 0 1.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <p class="tagline">
+                Война в Украине, 7 октября, антисемитизм. Ковид, WOKE и Трамп, левые и правые в Израиле — мы не только не слышим, но уже ненавидим друг друга. Каждый новый год всё хуже и хуже. Что происходит? Можно ли это остановить?
+            </p>
+        </section>
+
+        <!-- Book Showcase -->
+        <section class="book-showcase">
+            <div class="book-cover-container">
+                <img src="Cover_rus_1.jpg" alt="Обложка книги Аксиома" class="book-cover">
+            </div>
+            
+            <div class="book-info">
+                <div class="title-group">
+                    <h1 class="book-title-ru">АКСИОМА</h1>
+                </div>
+                
+                <div class="author">Яков Ласкер</div>
+                
+                <div class="description">
+                    <p>Яков Ласкер — израильский предприниматель, отец троих детей — случайно узнает тайну, которая переворачивает его представление о мире.</p>
+                    
+                    <p>Межпланетные путешествия, контакт с другими цивилизациями, говорящие волки, технологии за гранью воображения. И в центре всего — загадка о природе человеческих конфликтов.</p>
+                    
+                    <p>У Ласкера появляется шанс найти ответ, который веками искали политики и дипломаты. Но этот поиск приведет его совсем не туда, куда он ожидал.</p>
+                    
+                    <p>«Аксиома» — политический научно-фантастический триллер о тайнах, которые связывают миры.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Access Sections -->
+        <section class="access-sections">
+            <h2 class="section-title">Читайте и слушайте</h2>
+            
+            <!-- eBook Section -->
+            <div class="access-card" id="ebook-card">
+                <div class="access-header" onclick="toggleCard('ebook-card')">
+                    <div class="access-header-content">
+                        <span class="access-icon">📖</span>
+                        <h3 class="access-title">Электронная книга</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="access-content">
+                    <div class="access-content-inner">
+                        <div class="version-group">
+                            <h4 class="version-title">📥 Скачать бесплатно</h4>
+                            <p>Файл в формате EPUB для любого book reader приложения:</p>
+                            <a href="https://qrco.de/AxiomB" target="_blank" class="download-link">Скачать EPUB</a>
+                        </div>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">💰 Купить (поддержите автора)</h4>
+                            <p class="intro-text">Приобретите книгу на вашей любимой платформе и поддержите автора</p>
+                            <div class="purchase-options">
+                                <div class="store-group">
+                                    <h5 class="store-name">Kobo</h5>
+                                    <a href="https://www.kobo.com/us/en/ebook/axiom-14?sId=9f22ed76-b6e1-46d5-ba4d-9a735032e17e&ssId=lejXzhHyHNObxSAirtdLc&cPos=1" target="_blank" class="platform-link">Купить на Kobo</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Google Play</h5>
+                                    <a href="https://play.google.com/store/books/details/Yakov_Lasker_Axiom?id=7VKREQAAQBAJ&gl=us" target="_blank" class="platform-link">Купить на Google Play</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Apple Books</h5>
+                                    <a href="https://books.apple.com/us/book/axiom/id6755387439" target="_blank" class="platform-link">Купить на Apple Books</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Barnes & Noble</h5>
+                                    <a href="https://www.barnesandnoble.com/w/axiom-yakov-lasker/1148741834?ean=9791223971611" target="_blank" class="platform-link">Купить на Barnes & Noble</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audiobook Section -->
+            <div class="access-card" id="audiobook-card">
+                <div class="access-header" onclick="toggleCard('audiobook-card')">
+                    <div class="access-header-content">
+                        <span class="access-icon">🎧</span>
+                        <h3 class="access-title">Аудиокнига</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="access-content">
+                    <div class="access-content-inner">
+                        <p class="intro-text">Две профессиональные озвучки - выберите ту, что вам больше по душе</p>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">🎙️ Слушать бесплатно (Подкаст)</h4>
+                            <p style="margin-bottom: 1.5rem;">Слушайте в вашем любимом подкаст-плеере:</p>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h5 style="font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.8rem;">Версия от крупной киевской студии (с музыкой и эффектами)</h5>
+                                <div class="links-grid">
+                                    <a href="https://podcasts.apple.com/us/podcast/axiom-аксиома-book-by-yakov-lasker/id1868715308" target="_blank" class="platform-link">Apple Podcasts</a>
+                                    <a href="https://open.spotify.com/show/1BbTbb9zvpKyCBtyGIDj7E" target="_blank" class="platform-link">Spotify</a>
+                                    <a href="https://www.youtube.com/playlist?list=PLzhnpR6wE3Qj9l_yAes6vF4d5ZdthyIsz" target="_blank" class="platform-link">YouTube</a>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h5 style="font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.8rem;">Версия Евгения Кулакова (Классическая театральная подача)</h5>
+                                <div class="links-grid">
+                                    <a href="https://podcasts.apple.com/us/podcast/аксиома-яков-ласкер-читает-евгений-кулаков/id1868729140" target="_blank" class="platform-link">Apple Podcasts</a>
+                                    <a href="https://open.spotify.com/show/4OKmnwT3tx2gvvwb10kt6Q" target="_blank" class="platform-link">Spotify</a>
+                                    <a href="https://www.youtube.com/playlist?list=PLzhnpR6wE3QhsYcxiAe7kWdANIPM8zRpI" target="_blank" class="platform-link">YouTube</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">📥 Скачать бесплатно</h4>
+                            <p style="margin-bottom: 1.5rem;">Скачайте аудиокнигу и слушайте без интернета:</p>
+                            
+                            <div class="instructions">
+                                <div class="device-section">
+                                    <h5 class="device-title">🍏 Для iPhone</h5>
+                                    <ol>
+                                        <li>Установите приложение BookPlayer<br>
+                                            <a href="https://apps.apple.com/us/app/bookplayer/id1138219998" target="_blank">Ссылка на App Store</a><br>
+                                            Или найдите "BookPlayer" в App Store (синяя иконка с динамиком)
+                                        </li>
+                                        <li><strong>Скопируйте</strong> ссылку на нужную версию (не нажимайте, а удерживайте палец и выберите "Скопировать"):<br>
+                                            <div style="margin-top: 0.8rem;">
+                                                Версия от студии в Киеве: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem;">https://qrco.de/Axiom</code><br>
+                                                Версия Кулакова: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">https://qrco.de/AxiomK</code>
+                                            </div>
+                                        </li>
+                                        <li>Откройте BookPlayer → Add (+) → Download from URL</li>
+                                        <li>Вставьте скопированную ссылку и нажмите Start Download<br>
+                                            (Скачивание займет 3-5 минут, не закрывайте приложение)
+                                        </li>
+                                        <li>После скачивания добавьте в Библиотеку (Library)</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="device-section">
+                                    <h5 class="device-title">🤖 Для Android</h5>
+                                    <ol>
+                                        <li><strong>Нажмите на ссылку</strong>, чтобы скачать файл книги на телефон:<br>
+                                            <a href="https://qrco.de/Axiom" class="download-link">Версия от студии в Киеве</a>
+                                            <a href="https://qrco.de/AxiomK" class="download-link">Версия Кулакова</a><br>
+                                            (Подождите 3-5 минут, пока файл полностью скачается)
+                                        </li>
+                                        <li>Пока файл качается, установите Smart Audiobook Player<br>
+                                            <a href="https://play.google.com/store/apps/details?id=ak.alizandro.smartaudiobookplayer" target="_blank">Ссылка на Google Play</a><br>
+                                            Или найдите "Smart Audiobook Player" в Google Play (красная иконка)
+                                        </li>
+                                        <li>Откройте Smart Audiobook Player</li>
+                                        <li>При первом запуске выберите Корневую папку → Download (Загрузки)</li>
+                                        <li>Нажмите кнопку Обновить (круглая стрелка) — книга появится в библиотеке</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">💰 Купить (поддержите автора)</h4>
+                            <p class="intro-text">Приобретите аудиокнигу на вашей любимой платформе и поддержите автора</p>
+                            <div class="purchase-options">
+                                <div class="store-group">
+                                    <h5 class="store-name">Kobo</h5>
+                                    <a href="https://www.kobo.com/us/en/audiobook/axiom-18?sId=8d36a268-f951-48e6-8186-44d184a91dbc&ssId=YWS0_4jZ3ys1I9zIGLCei&cPos=1" target="_blank" class="platform-link">Купить на Kobo</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Google Play</h5>
+                                    <a href="https://play.google.com/store/audiobooks/details/Yakov_Lasker_Axiom?id=AQAAAEAanD_cNM&gl=us" target="_blank" class="platform-link">Купить на Google Play</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Яков Ласкер. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function toggleCard(cardId) {
+            const card = document.getElementById(cardId);
+            const allCards = document.querySelectorAll('.access-card');
+            
+            // Close all other cards
+            allCards.forEach(c => {
+                if (c.id !== cardId && c.classList.contains('active')) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle current card
+            card.classList.toggle('active');
+        }
+        
+        // Optional: Open first card by default
+        // document.getElementById('ebook-card').classList.add('active');
+    </script>
+</body>
+</html>
