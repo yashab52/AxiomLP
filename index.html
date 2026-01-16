@@ -432,6 +432,42 @@
             margin-top: 6rem;
         }
         
+        .footer-contact {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-contact h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-link:hover {
+            color: var(--color-accent-hover);
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -657,7 +693,26 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Яков Ласкер. Все права защищены.</p>
+        <div class="container">
+            <div class="footer-contact">
+                <h3>Связаться с автором</h3>
+                <div class="contact-links">
+                    <a href="mailto:yashab@yahoo.com" class="contact-link">
+                        <span class="contact-icon">📧</span>
+                        <span>yashab@yahoo.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yakovbecker/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span class="contact-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.facebook.com/yasha.becker.1" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span class="contact-icon">👤</span>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 Яков Ласкер. Все права защищены.</p>
+        </div>
     </footer>
 
     <script>
