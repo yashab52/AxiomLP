@@ -6,6 +6,8 @@
     <title>Аксиома | Axiom - Яков Ласкер</title>
     <meta name="description" content="Политический научно-фантастический триллер о тайнах, которые связывают миры">
     
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐺</text></svg>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -65,18 +67,39 @@
         
         /* Hero Section */
         .hero {
-            padding: 4rem 0 3rem;
+            padding: 4rem 0 2rem;
             text-align: center;
         }
         
         .tagline {
             max-width: 900px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2.5rem;
             font-size: clamp(1rem, 2.5vw, 1.25rem);
             line-height: 1.8;
             color: var(--color-text-secondary);
             font-weight: 300;
             animation: fadeIn 1.2s ease-out;
+        }
+        
+        .cta-button-hero {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--color-accent);
+            color: var(--color-bg-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.4s ease-out 0.2s both;
+            box-shadow: 0 4px 20px rgba(218, 133, 72, 0.4);
+            margin-bottom: 2.5rem;
+        }
+        
+        .cta-button-hero:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(218, 133, 72, 0.6);
         }
         
         @keyframes fadeIn {
@@ -90,7 +113,7 @@
             grid-template-columns: 1fr 1.5fr;
             gap: 4rem;
             align-items: start;
-            margin: 4rem 0;
+            margin: 0 0 4rem;
             animation: fadeIn 1.4s ease-out 0.3s both;
         }
         
@@ -380,6 +403,25 @@
             display: block;
         }
         
+        .player-container {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--color-bg-dark);
+            border: 1px solid var(--color-accent);
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .player-container.active {
+            display: block;
+        }
+        
+        .player-container iframe {
+            width: 100%;
+            border: none;
+        }
+        
         /* Footer */
         footer {
             padding: 4rem 0 2rem;
@@ -425,6 +467,7 @@
             <p class="tagline">
                 Война в Украине, 7 октября, антисемитизм. Ковид, WOKE и Трамп, левые и правые в Израиле — мы не только не слышим, но уже ненавидим друг друга. Каждый новый год всё хуже и хуже. Что происходит? Можно ли это остановить?
             </p>
+            <a href="#access-sections" class="cta-button-hero">Слушать/Читать книгу</a>
         </section>
 
         <!-- Book Showcase -->
@@ -434,12 +477,6 @@
             </div>
             
             <div class="book-info">
-                <div class="title-group">
-                    <h1 class="book-title-ru">АКСИОМА</h1>
-                </div>
-                
-                <div class="author">Яков Ласкер</div>
-                
                 <div class="description">
                     <p>Яков Ласкер — израильский предприниматель, отец троих детей — случайно узнает тайну, которая переворачивает его представление о мире.</p>
                     
@@ -453,55 +490,9 @@
         </section>
 
         <!-- Access Sections -->
-        <section class="access-sections">
+        <section class="access-sections" id="access-sections">
             <h2 class="section-title">Читайте и слушайте</h2>
             
-            <!-- eBook Section -->
-            <div class="access-card" id="ebook-card">
-                <div class="access-header" onclick="toggleCard('ebook-card')">
-                    <div class="access-header-content">
-                        <span class="access-icon">📖</span>
-                        <h3 class="access-title">Электронная книга</h3>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="access-content">
-                    <div class="access-content-inner">
-                        <div class="version-group">
-                            <h4 class="version-title">📥 Скачать бесплатно</h4>
-                            <p>Файл в формате EPUB для любого book reader приложения:</p>
-                            <a href="https://qrco.de/AxiomB" target="_blank" class="download-link">Скачать EPUB</a>
-                        </div>
-                        
-                        <div class="version-group">
-                            <h4 class="version-title">💰 Купить (поддержите автора)</h4>
-                            <p class="intro-text">Приобретите книгу на вашей любимой платформе и поддержите автора</p>
-                            <div class="purchase-options">
-                                <div class="store-group">
-                                    <h5 class="store-name">Kobo</h5>
-                                    <a href="https://www.kobo.com/us/en/ebook/axiom-14?sId=9f22ed76-b6e1-46d5-ba4d-9a735032e17e&ssId=lejXzhHyHNObxSAirtdLc&cPos=1" target="_blank" class="platform-link">Купить на Kobo</a>
-                                </div>
-                                
-                                <div class="store-group">
-                                    <h5 class="store-name">Google Play</h5>
-                                    <a href="https://play.google.com/store/books/details/Yakov_Lasker_Axiom?id=7VKREQAAQBAJ&gl=us" target="_blank" class="platform-link">Купить на Google Play</a>
-                                </div>
-                                
-                                <div class="store-group">
-                                    <h5 class="store-name">Apple Books</h5>
-                                    <a href="https://books.apple.com/us/book/axiom/id6755387439" target="_blank" class="platform-link">Купить на Apple Books</a>
-                                </div>
-                                
-                                <div class="store-group">
-                                    <h5 class="store-name">Barnes & Noble</h5>
-                                    <a href="https://www.barnesandnoble.com/w/axiom-yakov-lasker/1148741834?ean=9791223971611" target="_blank" class="platform-link">Купить на Barnes & Noble</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Audiobook Section -->
             <div class="access-card" id="audiobook-card">
                 <div class="access-header" onclick="toggleCard('audiobook-card')">
@@ -514,6 +505,20 @@
                 <div class="access-content">
                     <div class="access-content-inner">
                         <p class="intro-text">Две профессиональные озвучки - выберите ту, что вам больше по душе</p>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">🎧 Слушать здесь</h4>
+                            <p style="margin-bottom: 1.5rem;">Начните слушать прямо сейчас в браузере:</p>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                                <a href="javascript:void(0)" onclick="togglePlayer('kiev')" id="player-btn-kiev" class="platform-link" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
+                                    Версия от студии в Киеве
+                                </a>
+                                <a href="javascript:void(0)" onclick="togglePlayer('kulakov')" id="player-btn-kulakov" class="platform-link" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
+                                    Версия Кулакова
+                                </a>
+                            </div>
+                            <div id="player-container" class="player-container"></div>
+                        </div>
                         
                         <div class="version-group">
                             <h4 class="version-title">🎙️ Слушать бесплатно (Подкаст)</h4>
@@ -602,6 +607,52 @@
                     </div>
                 </div>
             </div>
+            <!-- eBook Section -->
+            <div class="access-card" id="ebook-card">
+                <div class="access-header" onclick="toggleCard('ebook-card')">
+                    <div class="access-header-content">
+                        <span class="access-icon">📖</span>
+                        <h3 class="access-title">Электронная книга</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="access-content">
+                    <div class="access-content-inner">
+                        <div class="version-group">
+                            <h4 class="version-title">📥 Скачать бесплатно</h4>
+                            <p>Файл в формате EPUB для любого book reader приложения:</p>
+                            <a href="https://qrco.de/AxiomB" target="_blank" class="download-link">Скачать EPUB</a>
+                        </div>
+                        
+                        <div class="version-group">
+                            <h4 class="version-title">💰 Купить (поддержите автора)</h4>
+                            <p class="intro-text">Приобретите книгу на вашей любимой платформе и поддержите автора</p>
+                            <div class="purchase-options">
+                                <div class="store-group">
+                                    <h5 class="store-name">Kobo</h5>
+                                    <a href="https://www.kobo.com/us/en/ebook/axiom-14?sId=9f22ed76-b6e1-46d5-ba4d-9a735032e17e&ssId=lejXzhHyHNObxSAirtdLc&cPos=1" target="_blank" class="platform-link">Купить на Kobo</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Google Play</h5>
+                                    <a href="https://play.google.com/store/books/details/Yakov_Lasker_Axiom?id=7VKREQAAQBAJ&gl=us" target="_blank" class="platform-link">Купить на Google Play</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Apple Books</h5>
+                                    <a href="https://books.apple.com/us/book/axiom/id6755387439" target="_blank" class="platform-link">Купить на Apple Books</a>
+                                </div>
+                                
+                                <div class="store-group">
+                                    <h5 class="store-name">Barnes & Noble</h5>
+                                    <a href="https://www.barnesandnoble.com/w/axiom-yakov-lasker/1148741834?ean=9791223971611" target="_blank" class="platform-link">Купить на Barnes & Noble</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
 
@@ -610,6 +661,45 @@
     </footer>
 
     <script>
+        // Player iframes
+        const playerIframes = {
+            kiev: '<iframe title="Axiom - Аксиома book by Yakov Lasker" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);height:315px;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=5ryca-14e6982-pbblog-playlist&share=1&download=0&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&order=serial&limit=50&filter=all&ss=14dbe098719db9b903ee0366f2dbe673&btn-skin=7&size=315" loading="lazy" allowfullscreen=""></iframe>',
+            kulakov: '<iframe title="Аксиома (Яков Ласкер, читает Евгений Кулаков)" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);height:315px;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=kykkb-14e6a9b-pbblog-playlist&share=1&download=0&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&order=serial&limit=50&filter=all&ss=14dbe098719db9b903ee0366f2dbe673&btn-skin=7&size=315" loading="lazy" allowfullscreen=""></iframe>'
+        };
+        
+        let currentPlayer = null;
+        
+        function togglePlayer(version) {
+            const container = document.getElementById('player-container');
+            
+            // If clicking the same player that's already open, close it
+            if (currentPlayer === version && container.classList.contains('active')) {
+                container.classList.remove('active');
+                container.innerHTML = '';
+                currentPlayer = null;
+                return;
+            }
+            
+            // Load and show the selected player
+            container.innerHTML = playerIframes[version];
+            container.classList.add('active');
+            currentPlayer = version;
+            
+            // Smooth scroll to player
+            setTimeout(() => {
+                container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+        
+        // Smooth scroll for CTA button
+        document.querySelector('.cta-button-hero').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('access-sections').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+        
         function toggleCard(cardId) {
             const card = document.getElementById(cardId);
             const allCards = document.querySelectorAll('.access-card');
