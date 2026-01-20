@@ -422,6 +422,15 @@
             border: none;
         }
         
+        /* Version filtering */
+        body.hide-kiev .kiev-only {
+            display: none !important;
+        }
+        
+        body.hide-kulakov .kulakov-only {
+            display: none !important;
+        }
+        
         /* Footer */
         footer {
             padding: 4rem 0 2rem;
@@ -546,10 +555,10 @@
                             <h4 class="version-title">🎧 Слушать здесь</h4>
                             <p style="margin-bottom: 1.5rem;">Начните слушать прямо сейчас в браузере:</p>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                                <a href="javascript:void(0)" onclick="togglePlayer('kiev')" id="player-btn-kiev" class="platform-link" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
+                                <a href="javascript:void(0)" onclick="togglePlayer('kiev')" id="player-btn-kiev" class="platform-link kiev-only" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
                                     Озвучка от студии в Киеве
                                 </a>
-                                <a href="javascript:void(0)" onclick="togglePlayer('kulakov')" id="player-btn-kulakov" class="platform-link" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
+                                <a href="javascript:void(0)" onclick="togglePlayer('kulakov')" id="player-btn-kulakov" class="platform-link kulakov-only" style="background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent);">
                                     Озвучка Кулакова
                                 </a>
                             </div>
@@ -560,7 +569,7 @@
                             <h4 class="version-title">🎙️ Слушать бесплатно (Подкаст)</h4>
                             <p style="margin-bottom: 1.5rem;">Слушайте в вашем любимом подкаст-плеере:</p>
                             
-                            <div style="margin-bottom: 2rem;">
+                            <div style="margin-bottom: 2rem;" class="kiev-only">
                                 <h5 style="font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.8rem;">Озвучка от крупной киевской студии (с музыкой и эффектами)</h5>
                                 <div class="links-grid">
                                     <a href="https://podcasts.apple.com/us/podcast/axiom-аксиома-book-by-yakov-lasker/id1868715308" target="_blank" class="platform-link">Apple Podcasts</a>
@@ -569,7 +578,7 @@
                                 </div>
                             </div>
                             
-                            <div>
+                            <div class="kulakov-only">
                                 <h5 style="font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.8rem;">Озвучка Евгения Кулакова (Классическая театральная подача)</h5>
                                 <div class="links-grid">
                                     <a href="https://podcasts.apple.com/us/podcast/аксиома-яков-ласкер-читает-евгений-кулаков/id1868729140" target="_blank" class="platform-link">Apple Podcasts</a>
@@ -593,8 +602,8 @@
                                         </li>
                                         <li><strong>Скопируйте</strong> ссылку на нужную версию (не нажимайте, а удерживайте палец и выберите "Скопировать"):<br>
                                             <div style="margin-top: 0.8rem;">
-                                                Озвучка от студии в Киеве: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem;">https://qrco.de/Axiom</code><br>
-                                                Озвучка Кулакова: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">https://qrco.de/AxiomK</code>
+                                                <span class="kiev-only">Озвучка от студии в Киеве: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem;">https://qrco.de/Axiom</code><br></span>
+                                                <span class="kulakov-only">Озвучка Кулакова: <code style="background: var(--color-bg-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">https://qrco.de/AxiomK</code></span>
                                             </div>
                                         </li>
                                         <li>Откройте BookPlayer → Add (+) → Download from URL</li>
@@ -609,8 +618,8 @@
                                     <h5 class="device-title">🤖 Для Android</h5>
                                     <ol>
                                         <li><strong>Нажмите на ссылку</strong>, чтобы скачать файл книги на телефон:<br>
-                                            <a href="https://qrco.de/Axiom" class="download-link">Озвучка от студии в Киеве</a>
-                                            <a href="https://qrco.de/AxiomK" class="download-link">Озвучка Кулакова</a><br>
+                                            <a href="https://qrco.de/Axiom" class="download-link kiev-only">Озвучка от студии в Киеве</a>
+                                            <a href="https://qrco.de/AxiomK" class="download-link kulakov-only">Озвучка Кулакова</a><br>
                                             (Подождите 3-5 минут, пока файл полностью скачается)
                                         </li>
                                         <li>Пока файл качается, установите Smart Audiobook Player<br>
@@ -717,6 +726,55 @@
     </footer>
 
     <script>
+        // Version filtering with cookies
+        (function() {
+            // Function to get URL parameter
+            function getUrlParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+            
+            // Function to set cookie
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + date.toUTCString();
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+            
+            // Function to get cookie
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+            
+            // Check for parameter or cookie
+            const versionParam = getUrlParameter('v');
+            const versionCookie = getCookie('version');
+            
+            if (versionParam === 'kulakov') {
+                // Set cookie for 10 years and hide Kiev content
+                setCookie('version', 'kulakov', 3650);
+                document.body.classList.add('hide-kiev');
+            } else if (versionParam === 'kiev') {
+                // Set cookie for 10 years and hide Kulakov content
+                setCookie('version', 'kiev', 3650);
+                document.body.classList.add('hide-kulakov');
+            } else if (versionCookie === 'kulakov') {
+                // Cookie exists for kulakov, hide Kiev content
+                document.body.classList.add('hide-kiev');
+            } else if (versionCookie === 'kiev') {
+                // Cookie exists for kiev, hide Kulakov content
+                document.body.classList.add('hide-kulakov');
+            }
+        })();
+        
         // Player iframes
         const playerIframes = {
             kiev: '<iframe title="Axiom - Аксиома book by Yakov Lasker" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);height:315px;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=5ryca-14e6982-pbblog-playlist&share=1&download=0&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&order=serial&limit=50&filter=all&ss=14dbe098719db9b903ee0366f2dbe673&btn-skin=7&size=315" loading="lazy" allowfullscreen=""></iframe>',
