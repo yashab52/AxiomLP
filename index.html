@@ -309,7 +309,6 @@
             text-align: center;
             font-weight: 500;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
         
         .platform-link:hover {
@@ -391,7 +390,12 @@
             font-weight: 600;
             margin: 0.5rem 0.5rem 0.5rem 0;
             transition: all 0.3s ease;
-	    white-space: nowrap;
+            
+            /* --- FORCE overrides with !important --- */
+            white-space: normal !important; 
+            word-break: normal !important; 
+            text-align: center;
+            line-height: 1.3;
         }
         
         .download-link:hover {
