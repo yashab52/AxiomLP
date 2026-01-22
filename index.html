@@ -309,6 +309,7 @@
             text-align: center;
             font-weight: 500;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         
         .platform-link:hover {
@@ -851,6 +852,14 @@
             const allCards = document.querySelectorAll('.access-card');
             const wasActive = card.classList.contains('active');
             
+            // If opening the card, scroll to it first (before any changes)
+            if (!wasActive) {
+                card.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            
             // Close all other cards
             allCards.forEach(c => {
                 if (c.id !== cardId && c.classList.contains('active')) {
@@ -858,18 +867,10 @@
                 }
             });
             
-            // Toggle current card
-            card.classList.toggle('active');
-            
-            // If opening the card (not closing), scroll to top of card after animation
-            if (!wasActive) {
-                setTimeout(() => {
-                    card.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100); // Small delay to let the card start opening
-            }
+            // Toggle current card after a small delay to allow scroll to start
+            setTimeout(() => {
+                card.classList.toggle('active');
+            }, 50);
         }
         
         // Optional: Open first card by default
