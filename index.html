@@ -264,8 +264,9 @@
             transition: max-height 0.5s ease, padding 0.5s ease;
         }
         
+        /* --- FIX: Increased max-height significantly to prevent cutting off on mobile --- */
         .access-card.active .access-content {
-            max-height: 3000px;
+            max-height: 10000px;
             padding: 0 2rem 2rem;
         }
         
@@ -391,7 +392,6 @@
             margin: 0.5rem 0.5rem 0.5rem 0;
             transition: all 0.3s ease;
             
-            /* --- FORCE overrides with !important --- */
             white-space: normal !important; 
             word-break: normal !important; 
             text-align: center;
@@ -508,6 +508,13 @@
             
             .access-card.active .access-content {
                 padding: 0 1.5rem 1.5rem;
+            }
+            
+            /* Make download links full width on mobile for better stacking */
+            .download-link {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
             }
         }
     </style>
@@ -649,8 +656,10 @@
                                     <h5 class="device-title">🤖 Для Android</h5>
                                     <ol>
                                         <li><strong>Нажмите на ссылку</strong>, чтобы скачать файл книги на телефон:<br>
-                                            <a href="https://qrco.de/Axiom" class="download-link kiev-only">Озвучка от студии в Киеве</a>
-                                            <a href="https://qrco.de/AxiomK" class="download-link kulakov-only">Озвучка Кулакова</a><br>
+                                            <div style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                                                <a href="https://qrco.de/Axiom" class="download-link kiev-only">Озвучка от студии в Киеве</a>
+                                                <a href="https://qrco.de/AxiomK" class="download-link kulakov-only">Озвучка Кулакова</a>
+                                            </div>
                                             (Подождите 3-5 минут, пока файл полностью скачается)
                                         </li>
                                         <li>Пока файл качается, установите Smart Audiobook Player<br>
